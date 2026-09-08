@@ -1,0 +1,17 @@
+services:
+  carburanti-api:
+    build: .
+    container_name: carburanti-api
+    restart: unless-stopped
+    ports:
+      - "8099:8099"
+    environment:
+      - CENTER_LAT=41.9593
+      - CENTER_LON=12.5449
+      - RADIUS_KM=3
+      - CACHE_TTL_SECONDS=21600
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"
