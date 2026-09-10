@@ -5,11 +5,15 @@ services:
     restart: unless-stopped
     ports:
       - "8099:8099"
-    environment:
-      - CENTER_LAT=41.9593
-      - CENTER_LON=12.5449
-      - RADIUS_KM=3
-      - CACHE_TTL_SECONDS=21600
+#    environment:
+#      - CENTER_LAT=41.9593
+#      - CENTER_LON=12.5449
+#      - RADIUS_KM=3
+#      - CACHE_TTL_SECONDS=21600
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data   # persiste lo storico (storico.db) tra i riavvii 
     logging:
       driver: json-file
       options:
